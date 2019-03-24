@@ -1,0 +1,5 @@
+node_modules
+.hubot_history
+.idea
+.DS_Store
+**/.DS_Store
