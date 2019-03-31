@@ -53,7 +53,7 @@ function rev_version() {
 echo "Cleaning up Repo"
 if [[ ! -d $repo ]]; then
     ssh-keyscan github.com 2>&1 >> ~/.ssh/known_hosts
-    git clone https://github.com/miyozinc/q-collect.git &>/dev/null
+    git clone git@github.com:miyozinc/q-collect.git &>/dev/null
 fi
 
 clean_up_repo $repo

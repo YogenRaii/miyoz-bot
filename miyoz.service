@@ -1,0 +1,25 @@
+; Hubot systemd service unit file
+; Place in e.g. `/etc/systemd/system/miyoz.service`, then `systemctl daemon-reload` and `service hubot start`.
+
+[Unit]
+Description=Miyoz Hubot
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/miyoz
+User=bitnami
+
+Restart=always
+RestartSec=10
+
+; Configure Hubot environment variables, use quotes around vars with whitespace as shown below.
+Environment="HUBOT_SLACK_TOKEN=xoxb-XXXXXX"
+Environment="HUBOT_AUTH_ADMIN=XXXXXX"
+Environment="BASE_PATH=/opt/miyoz"
+
+ExecStart=/opt/miyoz/bin/hubot --adapter slack
+
+[Install]
+WantedBy=multi-user.target
