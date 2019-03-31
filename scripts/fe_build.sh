@@ -3,7 +3,7 @@
 set -e
 set -u
 
-while getopts b:e:p:t:u:v: arg ; do
+while getopts b:e:u:v: arg ; do
     case $arg in
         'b')  source_branch=$OPTARG  ;;
         'e')  environment=$OPTARG    ;;
@@ -30,7 +30,5 @@ else
 fi
 
 echo "Building and deploying ${version} to ${environment}:"
-curl -sk --connect-timeout 5 "https://gbi.auto.nikecloud.com/job/ICONS/job/nikeGBIPUI/job/FrontendPipeline/job/01_build/buildWithParameters?token=icon-slacker&DEPLOY_ENV=$(echo "${environment}" | tr [a-z] [A-Z])&BRANCH=${branch}&ARCHIVE=true&DEPLOY=true"
-curl -sk --connect-timeout 5 "https://gbi.auto.nikecloud.com/job/ICONS/job/brand-icon-ui/job/02_Build/buildWithParameters?token=icon-slacker&DEPLOY_ENV=$(echo "${environment}" | tr [a-z] [A-Z])&BRANCH=${branch}"
 
 exit 0

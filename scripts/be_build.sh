@@ -26,6 +26,5 @@ esac
 $(dirname $0)/repo_branch.sh -b "${source_branch}" -r q-collect -u $user -v "${version}"
 
 echo "Building ${version} for ${environment}"
-#curl --connect-timeout 5 -sk "https://gbi.auto.nikecloud.com/job/gbip-manual/job/gbip/buildWithParameters?token=icon-slacker&DEPLOY_ENV=${environment}&BRANCH=${branch}&AWS_ENV=${aws_env}&PUPPET_VER=${puppet}"
 
 exit 0
