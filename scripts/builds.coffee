@@ -38,7 +38,7 @@ module.exports = (robot) ->
     return msg.reply "#{name} does not exist" unless user?
     unless robot.auth.hasRole(user, role)
       msg.reply "I can't do what you ask, you don't have sufficient permission..."
-      msg.reply "#{msg.envelope.user} has roles " + robot.auth.userRoles(user)
+      msg.reply "#{msg.envelope.user.name} has roles " + robot.auth.userRoles(user) + "! Ask him to give you builder permission."
     else
       @exec = require('child_process').exec
       command = "#{process.env.BASE_PATH}/scripts/#{project}_build.sh -b #{branch} -e #{env} -v #{ver} -u #{msg.message.user.name}"

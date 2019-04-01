@@ -27,4 +27,31 @@ $(dirname $0)/repo_branch.sh -b "${source_branch}" -r q-collect -u $user -v "${v
 
 echo "Building ${version} for ${environment}"
 
+body="{
+  \"request\": {
+    \"message\": \"Build from ${branch} triggered by ${user}\",
+    \"branch\": \"${branch}\",
+    \"config\": {
+      \"merge_mode\":[\"replace\"],
+      \"env\": {
+        \"global\": [
+          \"SPRING_PROFILES_ACTIVE=${environment}\"
+        ]
+      },
+      \"before_script\": \"chmod +x ./travis/scripts/deploy.sh\",
+      \"script\": \"./travis/scripts/deploy.sh\"
+    }
+  }
+}"
+
+#TRAVIS_API_TOKEN="${TRAVIS_API_TOKEN}"
+
+curl -s -X POST \
+ -H "Content-Type: application/json" \
+ -H "Accept: application/json" \
+ -H "Travis-API-Version: 3" \
+ -H "Authorization: token $TRAVIS_API_TOKEN" \
+ -d "$body" \
+ https://api.travis-ci.com/repo/miyozinc%2Fq-collect/requests
+
 exit 0
