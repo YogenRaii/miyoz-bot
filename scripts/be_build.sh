@@ -46,7 +46,7 @@ body="{
 
 #TRAVIS_API_TOKEN="${TRAVIS_API_TOKEN}"
 
-curl -s -X POST \
+curl --silent --output /dev/null --show-error --fail -s -X POST \
  -H "Content-Type: application/json" \
  -H "Accept: application/json" \
  -H "Travis-API-Version: 3" \
