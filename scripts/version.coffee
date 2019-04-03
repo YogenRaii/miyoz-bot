@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   ver (local|dev|prod)
+#   ver (dev|prod)
 #
 
 qcollect_api_urls = {
