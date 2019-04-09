@@ -42,11 +42,11 @@ body="{
       \"script\": \"./travis/scripts/deploy.sh\",
       \"deploy\": {
         \"provider\": \"s3\",
-        \"access_key_id\": \"${aws_access_key_id}\",
-        \"secret_access_key\":\"${aws_secret_access_key}\",
+        \"access_key_id\": \"${AWS_ACCESS_KEY_ID}\",
+        \"secret_access_key\":\"${AWS_SECRET_ACCESS_KEY}\",
         \"bucket\":\"q-collect\",
         \"skip_cleanup\" : true,
-        \"local_dir\": \"build\",
+        \"local_dir\": \"dist\",
         \"upload_dir\": \"q-collect-web-${environment}\"
       }
     }
